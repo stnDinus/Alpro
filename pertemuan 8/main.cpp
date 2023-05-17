@@ -62,9 +62,8 @@ void quickSort (int array[], int start_index, int end_index) {
     // perbaiki index pivot [[
     int pivot_index = start_index - 1; // index pivot awal
     for (int i = start_index; i < end_index; i++) {
-      if (array[i] < pivot) {
-        pivot_index++;
-        swap(array[i], array[pivot_index]);
+      if (array[i] > pivot) {
+        swap(array[i], array[++pivot_index]);
       }
     }
     swap(array[++pivot_index], array[end_index]);
