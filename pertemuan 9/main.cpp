@@ -35,17 +35,55 @@ int pangkat (int a, int b) {
 // ]]
 
 int main (int argc, char *argv[]) {
-  // isi "seed" pengacakan dengan waktu sekarang
-  srand(std::chrono::steady_clock::now().time_since_epoch().count());
-
-  // insialisasi a dan b dengan nilai acak -
-  // antara argumen(parameter fungsi main) kedua dan ketiga -
-  // jika ada argumen yang kurang,
-  // default nilai minimal ke 0 atau maksimal ke 10 [[
-  int a = (argc >= 2 ? std::stoi(argv[1]) : 1) + (rand() % ((argc >= 3 ? std::stoi(argv[2]) : 10) - (argc >= 2 ? std::stoi(argv[1]) : 1) + 1));
-  int b = (argc >= 2 ? std::stoi(argv[1]) : 1) + (rand() % ((argc >= 3 ? std::stoi(argv[2]) : 10) - (argc >= 2 ? std::stoi(argv[1]) : 1) + 1));
-  std::cout << "a = " << a << "\nb = " << b << std::endl;
+  // nilai default [[
+  int min = 0;
+  int max = 10;
+  bool acak = true;
+  int a = 6;
+  int b = 3;
   // ]]
+
+  // proses argumen-argumen parameter fungsi main untuk override nilai-nilai default [[
+  bool skip = false;
+  for (int i = 1; i < argc; i++) {
+    if (skip) {
+      skip = false;
+      continue;
+    }
+    if (argv[i][0] == '-') {
+      switch(argv[i][1]) {
+        case 'm': // min
+          min = std::stoi(argv[i+1]);
+          skip = true;
+          break;
+        case 'M': // max
+          max = std::stoi(argv[i+1]);
+          skip = true;
+          break;
+        case 'a':
+          a = std::stoi(argv[i+1]);
+          skip = true;
+          acak = false;
+          break;
+        case 'b':
+          b = std::stoi(argv[i+1]);
+          skip = true;
+          acak = false;
+          break;
+      }
+    }
+  }
+  // ]]
+
+
+  if (acak) {
+    // isi "seed" pengacakan dengan waktu sekarang
+    srand(std::chrono::steady_clock::now().time_since_epoch().count());
+    // insialisasi a dan b dengan nilai acak antara min dan max
+    a = min + (rand() % (min - max + 1));
+    b = min + (rand() % (min - max + 1));
+  }
+  std::cout << "a = " << a << "\nb = " << b << std::endl;
 
   // PEMANGGILAN DAN PENCETAKAN HASIL FUNGSI [[
   std::cout
