@@ -29,6 +29,28 @@ void insertionSort (int arr[], int n, int lindex = 0) {
   insertionSort(arr, n, lindex + 1);
 }
 
+void bubbleSwap (int arr[], int n, int lindex = 0) {
+  // basis
+  if (lindex == n) return;
+
+  if (arr[lindex] > arr[lindex + 1]) {
+    std::swap(arr[lindex], arr[lindex + 1]);
+  }
+
+  // recurse
+  bubbleSwap(arr, n, lindex + 1);
+}
+
+void bubbleSort (int arr[], int n, int lindex = 0) {
+  // basis
+  if (lindex == n - 1) return;
+
+  bubbleSwap(arr, n - lindex - 1);
+
+  // recurse
+  bubbleSort(arr, n, lindex + 1);
+}
+
 int main () {
   const int n = 10;
   int arr[n];
