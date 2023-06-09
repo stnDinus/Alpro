@@ -2,12 +2,14 @@
 #include <iostream>
 #include <chrono>
 
+using namespace std;
+
 void insertionSwap (int arr[], int i) {
   // basis
   if (i == 0) return;
 
   if (arr[i - 1] > arr[i]) {
-    std::swap(arr[i - 1], arr[i]);
+    swap(arr[i - 1], arr[i]);
   }
 
   // recurse
@@ -20,7 +22,7 @@ void insertionSort (int arr[], int n, int lindex = 0) {
 
   // for (int i = lindex; i > 0; i--) {
   //   if (arr[i - 1] > arr[i]) {
-  //     std::swap(arr[i], arr[i - 1]);
+  //     swap(arr[i], arr[i - 1]);
   //   }
   // }
   insertionSwap(arr, lindex);
@@ -34,7 +36,7 @@ void bubbleSwap (int arr[], int n, int lindex = 0) {
   if (lindex == n) return;
 
   if (arr[lindex] > arr[lindex + 1]) {
-    std::swap(arr[lindex], arr[lindex + 1]);
+    swap(arr[lindex], arr[lindex + 1]);
   }
 
   // recurse
@@ -47,7 +49,7 @@ void bubbleSort (int arr[], int n, int lindex = 0) {
 
   // for (int i = 0; i < n - lindex - 1; i++) {
   //   if (arr[i] > arr[i + 1]) {
-  //     std::swap(arr[i], arr[i + 1]);
+  //     swap(arr[i], arr[i + 1]);
   //   }
   // }
   bubbleSwap(arr, n - lindex - 1);
@@ -75,7 +77,7 @@ void selectionSort (int arr[], int n, int lindex = 0) {
   // for (int i = lindex + 1; i < n; i++) {
   //   if (arr[minIndex] > arr[i]) minIndex = i;
   // }
-  std::swap(arr[minIndex], arr[lindex]);
+  swap(arr[minIndex], arr[lindex]);
 
   // recurse
   selectionSort(arr, n, lindex + 1);
@@ -87,16 +89,16 @@ int main () {
 
   // init
   for (int i = 0; i < n; i++) {
-    srand(std::chrono::high_resolution_clock::now().time_since_epoch().count());
+    srand(chrono::high_resolution_clock::now().time_since_epoch().count());
     arr[i] = rand() % 100;
-    std::cout << arr[i] << ", ";
+    cout << arr[i] << ", ";
   }
-  std::cout << std::endl;
+  cout << endl;
 
   selectionSort(arr, n);
 
   for (int i = 0; i < n; i++) {
-    std::cout << arr[i] << ", ";
+    cout << arr[i] << ", ";
   }
 
   return 0;
