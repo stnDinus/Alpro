@@ -93,6 +93,26 @@ int linearSearch (int arr[], int n, int lookFor) {
   return linearSearch(arr, n - 1, lookFor);
 }
 
+// ketentuan: array telah terurut
+int binarySearch (int arr[], int lookFor, int startIndex, int endIndex) {
+  int sliceLength = endIndex - startIndex;
+  int midIndex = startIndex + (sliceLength / 2);
+
+  if (sliceLength == 1) {
+    if (arr[startIndex] == lookFor) {
+      return startIndex;
+    } else {
+      return -1;
+    }
+  }
+
+  if (arr[midIndex] <= lookFor) {
+    return binarySearch(arr, lookFor, midIndex, endIndex);
+  } else {
+    return binarySearch(arr, lookFor, startIndex, midIndex);
+  }
+}
+
 int main () {
   const int n = 10;
   int arr[n];
