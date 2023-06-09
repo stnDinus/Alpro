@@ -45,10 +45,40 @@ void bubbleSort (int arr[], int n, int lindex = 0) {
   // basis
   if (lindex == n - 1) return;
 
+  // for (int i = 0; i < n - lindex - 1; i++) {
+  //   if (arr[i] > arr[i + 1]) {
+  //     std::swap(arr[i], arr[i + 1]);
+  //   }
+  // }
   bubbleSwap(arr, n - lindex - 1);
 
   // recurse
   bubbleSort(arr, n, lindex + 1);
+}
+
+int selectionSwap (int arr[], int n, int minIndex , int lindex = 0) {
+  // basis
+  if (lindex == n) return minIndex;
+
+  if (arr[minIndex] > arr[lindex]) minIndex = lindex;
+
+  // return recurse
+  return selectionSwap(arr, n, minIndex, lindex + 1);
+};
+
+void selectionSort (int arr[], int n, int lindex = 0) {
+  // basis
+  if (lindex == n - 1) return;
+
+  int minIndex = selectionSwap(arr, n, lindex, lindex);
+  // int minIndex = lindex;
+  // for (int i = lindex + 1; i < n; i++) {
+  //   if (arr[minIndex] > arr[i]) minIndex = i;
+  // }
+  std::swap(arr[minIndex], arr[lindex]);
+
+  // recurse
+  selectionSort(arr, n, lindex + 1);
 }
 
 int main () {
@@ -63,7 +93,7 @@ int main () {
   }
   std::cout << std::endl;
 
-  insertionSort(arr, n);
+  selectionSort(arr, n);
 
   for (int i = 0; i < n; i++) {
     std::cout << arr[i] << ", ";
