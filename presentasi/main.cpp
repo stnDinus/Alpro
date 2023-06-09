@@ -4,6 +4,11 @@
 
 using namespace std;
 
+// Paradigma "Divide & Conquer":
+// =============================
+// sebuah metode algoritma yang membelah dua sebuah masalah,
+// hingga jumlah minimum masalah dapat diproses.
+
 void insertionSwap (int arr[], int i) {
   // basis
   if (i == 0) return;
