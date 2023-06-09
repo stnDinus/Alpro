@@ -83,6 +83,16 @@ void selectionSort (int arr[], int n, int lindex = 0) {
   selectionSort(arr, n, lindex + 1);
 }
 
+int linearSearch (int arr[], int n, int lookFor) {
+  // basis
+  if (n < 0) return -1;
+
+  if (arr[n] == lookFor) return n;
+
+  // recurse
+  return linearSearch(arr, n - 1, lookFor);
+}
+
 int main () {
   const int n = 10;
   int arr[n];
@@ -94,6 +104,13 @@ int main () {
     cout << arr[i] << ", ";
   }
   cout << endl;
+
+
+  int lookFor;
+  cout << "Look for: ";
+  cin >> lookFor;
+  int isFoundIndex = linearSearch(arr, n - 1, lookFor);
+  cout << isFoundIndex << endl;
 
   selectionSort(arr, n);
 
