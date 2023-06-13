@@ -131,7 +131,7 @@ int main() {
   const int n = 10;
   int arr[n], pilih;
 
-  // init untuk array(rondom)
+  // init untuk array (random)
   cout << "Array yang digunakan : ";
   for (int i = 0; i < n; i++) {
     srand(chrono::high_resolution_clock::now().time_since_epoch().count());
@@ -141,24 +141,22 @@ int main() {
   cout << endl;
 
   do {
-    cout << endl << endl;
-    cout << "Menu Pilihan" << endl;
-    cout << "===============================" << endl;
-    cout << "1. Rekursif Selection Short" << endl;
-    cout << "2. Rekursif Bubble Short" << endl;
-    cout << "3. Rekursif Insertion Short" << endl;
-    cout << "4. Rekursif Linear Search" << endl;
-    cout << "5. Rekursif Binary Search" << endl;
-    cout << "0. keluar Program" << endl;
-    cout << "===============================" << endl;
-    cout << "Masukan pilihan : ";
+    cout << "\n" <<
+            "Menu Pilihan" << endl <<
+            "===============================\n" <<
+            "1. Rekursif Selection Sort\n" <<
+            "2. Rekursif Bubble Sort\n" <<
+            "3. Rekursif Insertion Sort\n" <<
+            "4. Rekursif Linear Search\n" <<
+            "5. Rekursif Binary Search\n" <<
+            "0. Keluar Program\n" <<
+            "===============================\n" <<
+            "Masukan pilihan : ";
     cin >> pilih;
     cout << endl;
 
     if (pilih == 1) {
-      cout << endl;
       selectionSort(arr, n);
-      cout << endl;
 
       // Untuk menampilkan Hasilnya
       cout << "Hasil Array setelah di proses : ";
@@ -168,9 +166,7 @@ int main() {
       cout << endl;
 
     } else if (pilih == 2) {
-      cout << endl;
       bubbleSort(arr, n);
-      cout << endl;
 
       // Untuk menampilkan Hasilnya
       cout << "Hasil Array setelah di proses : ";
@@ -180,9 +176,7 @@ int main() {
       cout << endl;
 
     } else if (pilih == 3) {
-      cout << endl;
       insertionSort(arr, n);
-      cout << endl;
 
       // Untuk menampilkan Hasilnya
       cout << "Hasil Array setelah di proses : ";
@@ -192,63 +186,48 @@ int main() {
       cout << endl;
 
     } else if (pilih == 4) {
+      for (int i = 0; i < n; i++) {
+        cout << arr[i] << ", ";
+      }
+      cout << endl;
+
       int lookFor;
       cout << "Masukan yang akan di cari: ";
       cin >> lookFor;
 
-      linearSearch(arr, n, lookFor);
-
       int isFoundIndex = linearSearch(arr, n - 1, lookFor);
       if (isFoundIndex == -1) {
-        cout << lookFor << " tidak ditemukan dalam Array" << endl;
+        cout << lookFor << " tidak ditemukan dalam Array";
       } else {
-        cout << "Pada indeks ke-" << isFoundIndex << endl;
+        cout << "Pada indeks ke-" << isFoundIndex;
       }
-      // linearSearch(arr, n, lookFor);
       cout << endl;
-      // Untuk menampilkan Hasilnya
-      cout << "Array sekarang : ";
+    } else if (pilih == 5) {
+      // binarySearch memerlukan array untuk urut terlebih dahulu
+      insertionSort(arr, n);
+
       for (int i = 0; i < n; i++) {
         cout << arr[i] << ", ";
       }
       cout << endl;
 
-    } else if (pilih == 5) {
       int lookFor;
       cout << "Masukan yang akan di cari :";
       cin >> lookFor;
 
-      binarySearch(arr, lookFor, 0, n);
-
-      int isFoundIndex = linearSearch(arr, n - 1, lookFor);
+      int isFoundIndex = binarySearch(arr, lookFor, 0, n-1);
       if (isFoundIndex == -1) {
-        cout << lookFor << " tidak ditemukan dalam Array" << endl;
+        cout << lookFor << " tidak ditemukan dalam Array";
       } else {
-        cout << "Pada indeks ke-" << isFoundIndex << endl;
-      }
-      // binarySearch(arr, lookFor, 0, n);
-      cout << endl;
-      // Untuk menampilkan Hasilnya
-      cout << "Array sekarang : ";
-      for (int i = 0; i < n; i++) {
-        cout << arr[i] << ", ";
+        cout << "Pada indeks ke-" << isFoundIndex;
       }
       cout << endl;
-
     } else if (pilih > 5) {
-      cout << "******************************* " << endl;
-      cout << "Maaf, pilih hesuai menu saja!" << endl;
-      cout << "******************************* " << endl;
+      cout << "********************************* \n"
+              "* Maaf, pilih sesuai menu saja! * \n"
+              "*********************************" << endl;
     }
   } while (pilih != 0);
-
-  /*
-    int lookFor;
-    cout << "Masukan yang akan di cari: ";
-    cin >> lookFor;
-    int isFoundIndex = linearSearch(arr, n - 1, lookFor);
-    cout << isFoundIndex << endl;
-  */
 
   return 0;
 }
