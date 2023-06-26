@@ -25,7 +25,7 @@ struct Timer {
   ~Timer() {
     end = high_resolution_clock::now().time_since_epoch().count();
     const auto duration = end - start;
-    cout << endl << "Took\t: " << duration << endl;
+    cout << "Took\t: " << duration << " ms" << endl;
   }
 };
 
