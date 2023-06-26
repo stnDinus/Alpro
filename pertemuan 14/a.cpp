@@ -35,6 +35,9 @@ int binarySearch(vector<int> vec, int lookFor, int endIndex, int startIndex = 0)
   }
 }
 
+int binarySearch(Timer timer, vector<int> vec, int lookFor, int endIndex) {
+  return binarySearch(vec, lookFor, endIndex);
+}
 
 int main () {
   Timer timer;
@@ -45,11 +48,11 @@ int main () {
   int lookFor = 4;
 
   int linearFoundIndex = linearSearch(iVec, lookFor);
-  cout << "Linear Search: \t" << linearFoundIndex << endl;
+  cout << "Linear Search: \t" << linearFoundIndex << "\n" << endl;
 
-  int binaryFoundIndex = binarySearch(iVec, lookFor, iVec.size());
-  cout << "Binary Search: \t" << binaryFoundIndex << endl;
+  int binaryFoundIndex = binarySearch(Timer(), iVec, lookFor, iVec.size());
+  cout << "Binary Search: \t" << binaryFoundIndex << "\n" << endl;
 
-  cout << endl << "Main " << endl;
+  cout << "Main " << endl;
   return 0;
 }
