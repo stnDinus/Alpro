@@ -1,12 +1,10 @@
+#include "timer.hpp"
 #include <iostream>
 #include <vector>
-#include "timer.hpp"
 
 using namespace std;
 
-template <typename T>
-int linearSearch (vector<T> vec, T lookFor) {
-  Timer timer;
+template <typename T> int linearSearch(vector<T> vec, T lookFor) {
   for (int i = 0; i < vec.size(); i++) {
     if (vec[i] == lookFor) {
       return i;
@@ -16,7 +14,8 @@ int linearSearch (vector<T> vec, T lookFor) {
   return -1;
 }
 
-int binarySearch(vector<int> vec, int lookFor, int endIndex, int startIndex = 0) {
+int binarySearch(vector<int> vec, int lookFor, int endIndex,
+                 int startIndex = 0) {
   int sliceLength = endIndex - startIndex;
   int midIndex = startIndex + (sliceLength / 2);
 
@@ -35,11 +34,7 @@ int binarySearch(vector<int> vec, int lookFor, int endIndex, int startIndex = 0)
   }
 }
 
-int binarySearch(Timer timer, vector<int> vec, int lookFor, int endIndex) {
-  return binarySearch(vec, lookFor, endIndex);
-}
-
-int main () {
+int main() {
   Timer timer;
 
   vector<int> iVec = {1, 2, 3};
@@ -47,11 +42,16 @@ int main () {
   // searching
   int lookFor = 4;
 
-  int linearFoundIndex = linearSearch(iVec, lookFor);
-  cout << "Linear Search: \t" << linearFoundIndex << "\n" << endl;
+  {
+    Timer timer;
+    cout << "Linear Search\t: " << linearSearch(iVec, lookFor) << endl;
+  }
 
-  int binaryFoundIndex = binarySearch(Timer(), iVec, lookFor, iVec.size());
-  cout << "Binary Search: \t" << binaryFoundIndex << "\n" << endl;
+  {
+    Timer timer;
+    cout << "Binary Search\t: " << binarySearch(iVec, lookFor, iVec.size())
+         << endl;
+  }
 
   cout << "Main " << endl;
   return 0;
