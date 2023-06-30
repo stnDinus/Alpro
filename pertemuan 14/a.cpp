@@ -1,10 +1,13 @@
 #include "timer.hpp"
+#include <chrono>
 #include <iostream>
+#include <random>
 #include <vector>
 
 using namespace std;
+using namespace std::chrono;
 
-void quickSort(vector<int> * vec, int start_index, int end_index) {
+void quickSort(vector<int> *vec, int start_index, int end_index) {
   if (start_index < end_index) {
     // menggunakan titik acuan (pivot) elemen terakhir
     int pivot = (*vec)[end_index];
@@ -60,22 +63,48 @@ int binarySearch(vector<int> vec, int lookFor, int endIndex,
 int main() {
   Timer timer;
 
-  vector<int> iVec = {1, 2, 3};
+  int n = 10;
+  vector<int> iVec;
+  cout << "Vector awal\t: ";
+  for (int i = 0; i < 10; i++) {
+    srand(high_resolution_clock::now().time_since_epoch().count());
+    iVec.push_back(rand() % n);
+    cout << iVec[i] << ", ";
+  }
+  cout << "\n";
+
+  // sorting
+  cout << "\nQuick Sort\n";
+  {
+    Timer timer;
+    quickSort(&iVec, 0, n - 1);
+  }
 
   // searching
   int lookFor = 4;
 
+  cout << "\nMencari\t: " << lookFor << "\nPada\t: ";
+  for (int i : iVec) {
+    cout << i << ", ";
+  }
+  cout << "\n";
+
+  cout << "\nLinear Search\n";
+  int linearSearchRet;
   {
     Timer timer;
-    cout << "Linear Search\t: " << linearSearch(iVec, lookFor) << endl;
+    linearSearchRet = linearSearch(iVec, lookFor);
   }
+  cout << "Hasil Index\t: " << linearSearchRet << "\n";
 
+  cout << "\nBinary Search\n";
+  int binarySearchRet;
   {
     Timer timer;
-    cout << "Binary Search\t: " << binarySearch(iVec, lookFor, iVec.size())
-         << endl;
+    binarySearchRet = binarySearch(iVec, lookFor, iVec.size());
   }
+  cout << "Hasil Index\t: " << binarySearchRet << "\n";
 
-  cout << "Main " << endl;
+  cout << "\nMain\n";
   return 0;
 }
