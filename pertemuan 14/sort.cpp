@@ -1,12 +1,23 @@
 #include "sort.hpp"
 
 void bubbleSort(vector<int> *vec) {
-  for (int i = 0; i < (*vec).size(); i++) {
-    for (int j = 0; j < (*vec).size() - i - 1; j++) {
+  for (int i = 0; i < vec->size(); i++) {
+    for (int j = 0; j < vec->size() - i - 1; j++) {
       if ((*vec)[j] > (*vec)[j + 1]) {
         swap((*vec)[j], (*vec)[j + 1]);
       }
     }
+  }
+}
+
+void insertionSort(vector<int> *vec) {
+  for (int i = 0; i < vec->size(); i++) {
+    int minIndex = i;
+    for (int i2 = i; i2 < vec->size(); i2++) {
+      if ((*vec)[i2] < (*vec)[minIndex])
+        minIndex = i2;
+    }
+    swap((*vec)[i], (*vec)[minIndex]);
   }
 }
 

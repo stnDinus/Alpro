@@ -33,6 +33,16 @@ int main() {
     bubbleSort(&bubbleSortIVec);
   }
 
+  cout << "\nInsertion Sort\n";
+  vector<int> insertionSortIVec = iVec;
+  {
+    Timer timer;
+    insertionSort(&insertionSortIVec);
+  }
+  for (int i : insertionSortIVec) {
+    cout << i << ", ";
+  }
+
   cout << "\nQuick Sort\n";
   {
     Timer timer;
