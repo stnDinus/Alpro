@@ -39,9 +39,6 @@ int main() {
     Timer timer;
     insertionSort(&insertionSortIVec);
   }
-  for (int i : insertionSortIVec) {
-    cout << i << ", ";
-  }
 
   cout << "\nQuick Sort\n";
   {
