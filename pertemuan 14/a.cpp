@@ -27,6 +27,8 @@ int main() {
   cout << "\n";
 
   cout << "\nBubble Sort\n";
+  cout << "Time Complexity\t: O(n^2)\n";
+  cout << "Space Complexity: O(1)\n";
   vector<int> bubbleSortIVec = iVec;
   {
     Timer timer;
@@ -34,6 +36,8 @@ int main() {
   }
 
   cout << "\nInsertion Sort\n";
+  cout << "Time Complexity\t: O(n^2)\n";
+  cout << "Space Complexity: O(1)\n";
   vector<int> insertionSortIVec = iVec;
   {
     Timer timer;
@@ -41,6 +45,8 @@ int main() {
   }
 
   cout << "\nQuick Sort\n";
+  cout << "Time Complexity\t: O(log n)\n";
+  cout << "Space Complexity: O(log n)\n";
   {
     Timer timer;
     quickSort(&iVec, 0, n - 1);
@@ -59,6 +65,8 @@ int main() {
   cout << "\n";
 
   cout << "\nLinear Search\n";
+  cout << "Time Complexity\t: O(n)\n";
+  cout << "Space Complexity: O(1)\n";
   int linearSearchRet;
   {
     Timer timer;
@@ -67,6 +75,8 @@ int main() {
   cout << "Hasil Index\t: " << linearSearchRet << "\n";
 
   cout << "\nBinary Search\n";
+  cout << "Time Complexity\t: O(log n)\n";
+  cout << "Space Complexity: O(log n)\n";
   int binarySearchRet;
   {
     Timer timer;
